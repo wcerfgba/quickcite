@@ -1,11 +1,16 @@
 const quickCite = (() => {
-  const title = document.getElementsByTagName('title')[0].innerHTML;
+  const title = (() => {
+    const titleTag = document.getElementsByTagName('title')[0];
+    if (titleTag === undefined) return document.location.href;
+    return titleTag.innerHTML;
+  })();
   const url = document.location.href;
   const citeText = title + "\n* " + url;
   const citation = document.createElement('pre');
   citation.innerText = citeText;
   citation.style.display = 'block';
   citation.style.position = 'relative';
+  citation.style.margin = '0 0 16px 0';
   citation.style.width = 'auto';
   citation.style.background = '#fff';
   citation.style.color = '#000';
@@ -17,13 +22,14 @@ const quickCite = (() => {
     sel.removeAllRanges();
     sel.addRange(range);
   };
-  citation.addEventListener('click', () => citation.select());
+  citation.addEventListener('click', citation.select);
   const copy = document.createElement('a');
-  copy.innerHTML = 'Copy citation';
+  copy.innerHTML = 'Copy';
   copy.style.display = 'inline-block';
   copy.style.color = '#000';
-  copy.style.fontSize = '16px';
+  copy.style.fontSize = '14px';
   copy.style.textDecoration = 'underline';
+  copy.style.cursor = 'pointer';
   copy.addEventListener('click', () => {
     citation.select();
     document.execCommand('copy');
