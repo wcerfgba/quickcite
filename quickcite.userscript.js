@@ -36,6 +36,7 @@ button.style.left = '8px';
 button.style.bottom = '8px';
 button.style.color = '#fff';
 button.style.backgroundColor = '#5ad';
+button.style.transition = 'background-color 0.166s ease-out';
 button.style.fontSize = '24px';
 button.style.lineHeight = '32px';
 button.style.width = '32px';
@@ -45,5 +46,9 @@ button.style.textAlign = 'center';
 button.style.borderRadius = '100%';
 button.style.cursor = 'pointer';
 button.style.zIndex = '2147483647';
-button.addEventListener('click', quickCite);
+button.addEventListener('click', () => {
+  quickCite();
+  button.style.backgroundColor = '#5da';
+  window.setTimeout(() => button.style.backgroundColor = '#5ad', 166);
+});
 document.body.insertBefore(button, document.body.firstChild);
