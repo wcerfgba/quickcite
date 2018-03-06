@@ -1,10 +1,4 @@
 # QuickCite
 
-Add a simple plaintext citation to any web page.
-
-```
-<script src="https://raw.githubusercontent.com/wcerfgba/quickcite/master/dist/quickcite.embed.js">
-</script>
-```
-
-Also available as a userscript (look in `dist/`).
+A userscript to add a button to all pages which will copy the title and URL to
+the clipboard.
